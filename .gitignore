@@ -5,3 +5,6 @@ __pycache__/
 venv/
 quantum/
 .DS_Store
+*.lms
+*.ldf
+*.log
