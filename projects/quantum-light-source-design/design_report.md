@@ -120,7 +120,7 @@ Improvements in order of payoff:
 2. **Signal-arm efficiency η_s.** It sets the delivered rate and P(1) directly; g⁽²⁾(0) does not reveal it.
 3. **Herald-arm efficiency η_h.** Higher η_h raises the herald rate and, with a PNR detector, suppresses multi-pair heralds further.
 
-**Limitations.** Efficiencies and repetition rate are assumed, not measured. Dark counts, Raman background and pump leakage are absent, so real g⁽²⁾(0) values will be higher. The purity model uses two spectral modes, while a real ring's joint spectrum has a continuum. The model has not yet been compared with measured data from a heralded ring source; that is the first next step.
+**Limitations.** Efficiencies and repetition rate are assumed, not measured. Dark counts, Raman background and pump leakage are absent, so real g⁽²⁾(0) values will be higher. The purity model uses two spectral modes, while a real ring's joint spectrum has a continuum. **Update:** the source model has since been fitted to a published heralded silicon source (Paesani et al., Nat. Commun. 2020) and predicts its unheralded g⁽²⁾ and two-source HOM visibility within the measurement errors ([notebook 10](../../notebooks/10_validation_heralded_source.ipynb)). The ring parameters (Q, linewidth, escape efficiency) have been derived from a Lumerical design of the Kues et al. ring ([notebook 13](../../notebooks/13_ring_resonator_design.ipynb)).
 
 ## References
 
