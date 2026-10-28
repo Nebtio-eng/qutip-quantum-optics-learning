@@ -1,20 +1,22 @@
 # Quantum Optics with QuTiP: from a single photon to an on-chip light source
 
-A self-built course in quantum optics for integrated photonics, written while moving from classical photonics (Zemax, Lumerical) into quantum photonics. It runs from the first quantum state to a microring photon-pair source designed in Lumerical, modelled in QuTiP and checked against published experiments.
+A self-built course in quantum optics for integrated photonics, written while moving from classical photonics (Zemax, Lumerical) into quantum photonics. It runs from the first quantum state to a microring photon-pair source designed in Lumerical, modelled in QuTiP and checked against published experiments, and on to a two-photon CNOT gate fed by that source, simulated in Perceval.
 
 Every result is **validated**: each notebook compares its simulations with analytic formulas or an independent method through a `check()` helper and ends with a pass count. Notebooks 09, 10 and 12 compare the models with published experiments.
 
-**213 automated theory-vs-simulation checks, all passing.**
+**406 automated theory-vs-simulation checks, all passing.**
 
 ## Headline results
 
 **1. [Ring resonator design → quantum performance](notebooks/13_ring_resonator_design.ipynb)** (Lumerical MODE + QuTiP). The microring of Kues et al. (Nature 2017) rebuilt from its waveguide cross-section: the model reproduces the 200 GHz FSR with a 136.9 µm radius and the 235,000 loaded Q with an ~800 MHz linewidth. It shows that 95 % of the generated photons can leave the ring (the ceiling on heralding efficiency), and that dispersion keeps at least 10 frequency-bin pairs usable.
 
-**2. [Source model validated against a real experiment](notebooks/10_validation_heralded_source.ipynb).** Fitted with one parameter to the heralded g⁽²⁾ of a silicon pair source (Paesani et al., Nat. Commun. 2020), the model predicts the measured unheralded g⁽²⁾ (1.99 vs 1.97 ± 0.03) and the two-source HOM visibility (0.944 vs 0.96 ± 0.02).
+**2. [From photon source to quantum gate](notebooks/14_source_to_quantum_gate.ipynb)** (Perceval). A post-selected CNOT and a heralded (Knill) CNOT fed by the measured silicon source and by the designed microring, with every Perceval number checked against an independent permanent-based simulation. The post-selected gate reaches a truth-table fidelity of 0.93 with both sources, limited by distinguishability for the ring and by noise photons replacing lost ones for the silicon source. The heralded gate falls to 0.005 (silicon, 12.6 % heralding efficiency) and 0.71 (ring), because a lost photon still lets the heralds fire. At realistic pair brightness the post-selected gate gives 20–270 events per second, the heralded one under 0.02.
 
-**3. [Why fidelity falls with dimension in Kues et al. 2017](notebooks/12_kues2017_fidelity_analysis.ipynb).** Fixed white noise and unequal bin brightness are ruled out, the latter by both the measured spectrum and the ring's own dispersion. The remaining explanations point to the measurement setup rather than the chip, and the notebook proposes the measurement that separates them.
+**3. [Source model validated against a real experiment](notebooks/10_validation_heralded_source.ipynb).** Fitted with one parameter to the heralded g⁽²⁾ of a silicon pair source (Paesani et al., Nat. Commun. 2020), the model predicts the measured unheralded g⁽²⁾ (1.99 vs 1.97 ± 0.03) and the two-source HOM visibility (0.944 vs 0.96 ± 0.02).
 
-**4. [Quantum light source design](projects/quantum-light-source-design/design_report.md).** Five heralded-source designs compared: a gently pumped ring with a photon-number-resolving herald gives g⁽²⁾(0) = 0.020, against 1.0 for an attenuated laser.
+**4. [Why fidelity falls with dimension in Kues et al. 2017](notebooks/12_kues2017_fidelity_analysis.ipynb).** Fixed white noise and unequal bin brightness are ruled out, the latter by both the measured spectrum and the ring's own dispersion. The remaining explanations point to the measurement setup rather than the chip, and the notebook proposes the measurement that separates them.
+
+**5. [Quantum light source design](projects/quantum-light-source-design/design_report.md).** Five heralded-source designs compared: a gently pumped ring with a photon-number-resolving herald gives g⁽²⁾(0) = 0.020, against 1.0 for an attenuated laser.
 
 ![Heralded g2 against herald rate](projects/quantum-light-source-design/figures/g2_vs_rate.png)
 
@@ -35,6 +37,7 @@ Every result is **validated**: each notebook compares its simulations with analy
 | 11 | [Time evolution and g⁽²⁾(τ)](notebooks/11_time_evolution_g2_tau.ipynb) | Schrödinger and master equations, photon lifetime, bunching and antibunching | Directional coupler, ring Q, HBT measurement |
 | 12 | [Fidelity vs dimension](notebooks/12_kues2017_fidelity_analysis.ipynb) | Noise, imbalance and dephasing models fitted to tomography data | Kues et al. 2017 frequency-bin qudits |
 | 13 | [Ring resonator design](notebooks/13_ring_resonator_design.ipynb) | Mode solving, coupling, Q budget, dispersion, bin brightness | Lumerical design to quantum figures of merit |
+| 14 | [From photon source to quantum gate](notebooks/14_source_to_quantum_gate.ipynb) | Perceval, imperfect-source model, HOM with noise and loss, post-selected vs heralded CNOT, brightness, click detectors | Which source imperfection limits a two-photon gate |
 
 **Projects**
 - [Ring resonator design](projects/ring-resonator-design/): Lumerical MODE scripts (FDE and EME) and their saved results, read by notebook 13.
@@ -49,6 +52,7 @@ Every concept is explained the same way: the idea in plain words with an optics 
 | HOM visibility, weak coherent light | 0.5 | limit quoted in the literature | agrees |
 | Unheralded g⁽²⁾, silicon pair source (Paesani et al.) | 1.990 | 1.97 ± 0.03 | agrees |
 | Two-source HOM visibility (Paesani et al.) | 0.944 | 0.96 ± 0.02 | agrees within error |
+| Two-source HOM visibility (Paesani et al.), Perceval source model with measured purity, g⁽²⁾ and loss (notebook 14) | 0.943 | 0.96 ± 0.02 | agrees within error |
 | Ring photon lifetime / linewidth, Q = 92,000 (Ma et al.) | 75.7 ps / 2.1 GHz | ~76 ps / ~2.1 GHz | agrees |
 | Ring linewidth, Q = 235,000 (Kues et al.) | 823 MHz | ~800 MHz | agrees |
 | Microring effective dimension (Kues et al.) | g⁽²⁾ = 1 + 1/K | 10.45 ± 0.53 | ideal K = 10 within 0.85 error bars |
@@ -63,7 +67,7 @@ pip install -r requirements.txt
 jupyter lab
 ```
 
-Every notebook runs top to bottom on a laptop (notebook 09 takes under a minute) and ends with `N of N checks passed`. Notebook 13 reads saved Lumerical results, so it needs no Lumerical license; the scripts in `projects/ring-resonator-design/lumerical/` regenerate them with Ansys Lumerical MODE. Built and tested with Python 3, QuTiP 5.3.1.
+Every notebook runs top to bottom on a laptop (notebooks 09 and 14 take under a minute) and ends with `N of N checks passed`. Notebook 13 reads saved Lumerical results, so it needs no Lumerical license; the scripts in `projects/ring-resonator-design/lumerical/` regenerate them with Ansys Lumerical MODE. Notebook 14 needs Perceval (`pip install perceval-quandela`, included in `requirements.txt`). Built and tested with Python 3, QuTiP 5.3.1, Perceval 1.3.1.
 
 ## Limitations and next steps
 
@@ -71,6 +75,9 @@ Every notebook runs top to bottom on a laptop (notebook 09 takes under a minute)
 - The bus–ring coupling model and an EME check differ by up to 35 %; this moves the design gap, not the escape efficiency.
 - Avoided crossings with higher-order ring modes cannot be located at the model's precision.
 - Dark counts and Raman noise are not yet in the source model.
+- The CNOT study (notebook 14) uses truth-table fidelity only, not process fidelity, and a mixture model of source imperfections (Pont et al. 2022). The microring source is a best case: designed g⁽²⁾ and on-chip efficiency only.
+- Gate rates scale as b² or b⁴ with the pair brightness b, which assumes every source's own herald is monitored; the brightness values are assumed.
+- Perceval 1.3.1 deviates from exact b⁴ scaling by up to about 1 % for the heralded gate at b = 0.005 with M < 1 and loss. Notebook 14 prints this and does not count it as a check; no reported result depends on it.
 
 ## References
 
@@ -79,4 +86,8 @@ Every notebook runs top to bottom on a laptop (notebook 09 takes under a minute)
 - C. Reimer et al., Frontiers in Optics FTh3E.2 (2017).
 - S. Paesani et al., "Near-ideal spontaneous photon sources in silicon quantum photonics," Nat. Commun. 11, 2505 (2020). [arXiv:2005.09579](https://arxiv.org/abs/2005.09579)
 - C. Ma et al., "Silicon photonic entangled photon-pair and heralded single photon generation with CAR > 12,000 and g⁽²⁾(0) < 0.006," [arXiv:1710.01001](https://arxiv.org/abs/1710.01001).
+- M. Pont et al., "Quantifying n-photon indistinguishability with a cyclic integrated interferometer," Phys. Rev. X 12, 031033 (2022).
+- N. Heurtel et al., "Perceval: A software platform for discrete variable photonic quantum computing," Quantum 7, 931 (2023).
+- T. C. Ralph, N. K. Langford, T. B. Bell, A. G. White, Phys. Rev. A 65, 062324 (2002); H. F. Hofmann, S. Takeuchi, Phys. Rev. A 66, 024308 (2002).
+- E. Knill, "Quantum gates using linear optics and postselection," Phys. Rev. A 66, 052306 (2002).
 - J. R. Johansson, P. D. Nation, F. Nori, QuTiP, [qutip.org](https://qutip.org).
