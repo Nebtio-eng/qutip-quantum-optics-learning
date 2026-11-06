@@ -30,4 +30,10 @@ Each script writes `results/s19_<step>.json`, which the next step reads.
 | Gap for Q_L = 235,000 | 0.70 µm (0.63–0.70 µm including the EME check) |
 | Linewidth | 823 MHz |
 | Escape efficiency (max heralding efficiency) | 0.954 |
-| Brightness of bin pair 10 | 0.74 of bin pair 1 |
+| Brightness of bin pair 10 | 0.92 of bin pair 1 |
+
+## Bin-brightness rule
+
+Bin brightness is the overlap of two resonances, 1/(1 + (Δ_k/Γ)²), for a CW pump on resonance and equal linewidths; notebook 13 confirms it with a master equation. The earlier rule, 1/(1 + (2Δ_k/Γ)²), overstated the dispersion penalty (bin pair 10: 0.74). With the corrected rule, the 2× brightness spread seen in the measured joint spectrum allows D up to about 3.4× the model (1.7× before), and D = 5× is disfavoured rather than excluded.
+
+`lumerical/s19_dispersion.py`, its saved JSON and `s19_dispersion_brightness.png` are the original Lumerical run and still use the earlier rule. The resonance positions Δ_k in them are unaffected, and notebook 13 recomputes the brightness from those Δ_k.
