@@ -1,0 +1,280 @@
+{
+ "description": "Ring design cards used by notebooks 16 and 17. Exact transfer-matrix values on the cross-section of notebook 13. All frequencies in Hz. Rates are ratios: absolute model pair rates are not reliable.",
+ "designs": {
+  "kues_2017": {
+   "kind": "single",
+   "geometry": {
+    "gap1_um": 0.6957682987754836,
+    "gap2_um": null,
+    "phi1": 0.15771348142266237,
+    "phi2": 0.0,
+    "L_m": 0.000860325507642505,
+    "FSR_Hz": 199730647132.92188,
+    "bus_arm_extra_m": null,
+    "loss_dB_per_cm": 0.05999999999999999,
+    "Q_i": 5117529.018921119
+   },
+   "pump": {
+    "Q_L": 232459.70051490323,
+    "linewidth_Hz": 831777590.1068008,
+    "eta_in": 0.9551401900788093
+   },
+   "signal": {
+    "bin": 1,
+    "Q_L": 232696.99119688876,
+    "linewidth_Hz": 831787726.850764,
+    "eta_esc": 0.9551401900788093
+   },
+   "idler": {
+    "bin": -1,
+    "Q_L": 232222.39416036263,
+    "linewidth_Hz": 831767499.2405,
+    "eta_esc": 0.9551401900788093
+   },
+   "r": 0.9999878133042409,
+   "coherence_time_s": 6.01114904511819e-10,
+   "purity": {
+    "P_max": 0.9166652279408778,
+    "M": 0.9080911652790687,
+    "sig_over_Gs": 2.0,
+    "M_measured": 0.921
+   },
+   "cw_rate_relative_to_kues_ring": 1.0,
+   "pulsed_brightness_relative": 0.19473800681439976,
+   "bin_rate_relative_to_k1": [
+    1.0,
+    0.9998720608758375,
+    0.9993182781239873,
+    0.9978306350303119,
+    0.9947087097345139,
+    0.9890821954755483,
+    0.9799551400997788,
+    0.9662796324577639,
+    0.9470624101100313,
+    0.9214990726014056
+   ],
+   "k_max_half_brightness": 18
+  },
+  "qkd": {
+   "kind": "single",
+   "geometry": {
+    "gap1_um": 0.6938383589840078,
+    "gap2_um": null,
+    "phi1": 0.1586459558951021,
+    "phi2": 0.0,
+    "L_m": 0.000860325507642505,
+    "FSR_Hz": 199730647132.92188,
+    "bus_arm_extra_m": null,
+    "loss_dB_per_cm": 0.030705174113526718,
+    "Q_i": 10000000.0
+   },
+   "pump": {
+    "Q_L": 235000.00000000055,
+    "linewidth_Hz": 822786253.1541889,
+    "eta_in": 0.9767954341006506
+   },
+   "signal": {
+    "bin": 1,
+    "Q_L": 235239.88377401853,
+    "linewidth_Hz": 822796280.3221288,
+    "eta_esc": 0.9767954341006506
+   },
+   "idler": {
+    "bin": -1,
+    "Q_L": 234760.10038215923,
+    "linewidth_Hz": 822776271.3679836,
+    "eta_esc": 0.9767954341006506
+   },
+   "r": 0.999987813304241,
+   "coherence_time_s": 6.076838361547376e-10,
+   "purity": {
+    "P_max": 0.9166652279408778,
+    "M": 0.9080911652790687,
+    "sig_over_Gs": 2.0,
+    "M_measured": null
+   },
+   "cw_rate_relative_to_kues_ring": 1.1300731861569615,
+   "pulsed_brightness_relative": 0.21768930989168672,
+   "bin_rate_relative_to_k1": [
+    1.0,
+    0.9998692515854384,
+    0.9993033125063623,
+    0.9977830778123629,
+    0.994593076371883,
+    0.9888449730951385,
+    0.9795237005624902,
+    0.9655641782023535,
+    0.9459620096883546,
+    0.9199122175014838
+   ],
+   "k_max_half_brightness": 18
+  },
+  "gate": {
+   "kind": "interferometric",
+   "geometry": {
+    "gap1_um": 0.40235429478511126,
+    "gap2_um": 0.7331161056245183,
+    "phi1": 0.3882838827795154,
+    "phi2": 0.1407179515620956,
+    "L_m": 0.000860325507642505,
+    "FSR_Hz": 199730647132.92188,
+    "bus_arm_extra_m": 0.0004301627538212525,
+    "loss_dB_per_cm": 0.030705174113526718,
+    "Q_i": 10000000.0
+   },
+   "pump": {
+    "Q_L": 19979.36169385622,
+    "linewidth_Hz": 9677725067.197351,
+    "eta_in": 0.9981242880047785
+   },
+   "signal": {
+    "bin": 1,
+    "Q_L": 100000.00000830002,
+    "linewidth_Hz": 1935545013.3660724,
+    "eta_esc": 0.9897796303828564
+   },
+   "idler": {
+    "bin": -1,
+    "Q_L": 99796.04504078823,
+    "linewidth_Hz": 1935497944.6275747,
+    "eta_esc": 0.989779630382856
+   },
+   "r": 5.000000000189605,
+   "coherence_time_s": 2.5832517277935004e-10,
+   "purity": {
+    "P_max": 0.9943181818185797,
+    "M": 0.9800073518637701,
+    "sig_over_Gs": 1.891078494182723,
+    "M_measured": null
+   },
+   "cw_rate_relative_to_kues_ring": 0.003722673050779337,
+   "pulsed_brightness_relative": 0.020460292138199193,
+   "bin_rate_relative_to_k1": [
+    1.0,
+    0.203324105927835,
+    0.9998738500965078,
+    0.20332096633995875,
+    0.9990180304313284,
+    0.20330754295052794,
+    0.9962355292017395,
+    0.2032715647919489,
+    0.9897806937659259,
+    0.2031958968235631
+   ],
+   "k_max_half_brightness": 28
+  }
+ },
+ "gamma_per_W_km": 233.0,
+ "published_comparison": [
+  {
+   "quantity": "Razzari ring (Q = 1.2 M): OPO threshold, mW",
+   "model": 38.32828410133879,
+   "published": 54.0,
+   "ratio": 0.7097830389136812,
+   "source": "published 54 mW, arXiv:1404.5610"
+  },
+  {
+   "quantity": "Reimer ring (Q = 1.375 M): OPO threshold, mW",
+   "model": 29.991056803945614,
+   "published": 120.0,
+   "ratio": 0.24992547336621346,
+   "source": "published about 120 mW, arXiv:1403.6180"
+  },
+  {
+   "quantity": "Reimer ring: field enhancement",
+   "model": 19.3043583318053,
+   "published": 17.9,
+   "ratio": 1.0784557727265531,
+   "source": "published 17.9"
+  },
+  {
+   "quantity": "Reimer ring: pairs/s at the drop port, 30 mW, model threshold",
+   "model": 74880142.33841357,
+   "published": 316000.0,
+   "ratio": 236.9624757544733,
+   "source": "low-gain formula strained: model mu = 1.00"
+  },
+  {
+   "quantity": "Reimer ring: pairs/s at the drop port, from the published 120 mW threshold",
+   "model": 4677219.029578599,
+   "published": 316000.0,
+   "ratio": 14.801326042970251,
+   "source": "uses mu = (P/P_th)^2, no gamma"
+  },
+  {
+   "quantity": "E2024 silicon ring: pairs/s per mW^2 in the bus, MHz",
+   "model": 62.41530729187476,
+   "published": 27.0,
+   "ratio": 2.3116780478472134,
+   "source": "published 27 MHz/mW^2; gamma, n_g and coupling ASSUMED"
+  }
+ ],
+ "gate_check": [
+  {
+   "case": "T = eta_esc only",
+   "extra_loss_dB": 0.0,
+   "T": 0.9897796303828564,
+   "M": 0.9800073518637701,
+   "g2": 0.009950472671473375,
+   "g2_case": "click herald at this T",
+   "F_direct": 0.9125142276764865,
+   "P_heralds": 0.07506281853770348,
+   "rate_per_s_at_mu": 0.004691426158606468
+  },
+  {
+   "case": "T = eta_esc only",
+   "extra_loss_dB": 0.0,
+   "T": 0.9897796303828564,
+   "M": 0.9800073518637701,
+   "g2": 0.01954773305907134,
+   "g2_case": "low-efficiency herald, conservative",
+   "F_direct": 0.8960585005458948,
+   "P_heralds": 0.07497146554564818,
+   "rate_per_s_at_mu": 0.004685716596603011
+  },
+  {
+   "case": "plus 0.1 dB",
+   "extra_loss_dB": 0.1,
+   "T": 0.9672494953540121,
+   "M": 0.9800073518637701,
+   "g2": 0.01016915410784716,
+   "g2_case": "click herald at this T",
+   "F_direct": 0.8337876289947301,
+   "P_heralds": 0.0749980994253071,
+   "rate_per_s_at_mu": 0.004687381214081693
+  },
+  {
+   "case": "plus 0.1 dB",
+   "extra_loss_dB": 0.1,
+   "T": 0.9672494953540121,
+   "M": 0.9800073518637701,
+   "g2": 0.01954773305907134,
+   "g2_case": "low-efficiency herald, conservative",
+   "F_direct": 0.8197850368320898,
+   "P_heralds": 0.07492508830320536,
+   "rate_per_s_at_mu": 0.004682818018950335
+  },
+  {
+   "case": "plus 1 dB",
+   "extra_loss_dB": 1.0,
+   "T": 0.7862099065680661,
+   "M": 0.9800073518637701,
+   "g2": 0.011926355782070464,
+   "g2_case": "click herald at this T",
+   "F_direct": 0.39696766272373607,
+   "P_heralds": 0.07051566118428307,
+   "rate_per_s_at_mu": 0.004407228824017692
+  },
+  {
+   "case": "plus 1 dB",
+   "extra_loss_dB": 1.0,
+   "T": 0.7862099065680661,
+   "M": 0.9800073518637701,
+   "g2": 0.01954773305907134,
+   "g2_case": "low-efficiency herald, conservative",
+   "F_direct": 0.3937163784875284,
+   "P_heralds": 0.07055796756558358,
+   "rate_per_s_at_mu": 0.004409872972848974
+  }
+ ]
+}
