@@ -4,19 +4,19 @@ A self-built course in quantum optics for integrated photonics, written while mo
 
 Every result is **validated**: each notebook compares its simulations with analytic formulas or an independent method through a `check()` helper and ends with a pass count. Notebooks 09, 10, 12 and 17 compare the models with published experiments, including where they miss.
 
-**658 automated theory-vs-simulation checks, all passing.**
+**Every reported number is checked against an independent method: about 340 distinct checks (658 executed, many inside parameter sweeps) across 18 notebooks including the project notebook, all passing.**
 
 ## Headline results
 
-**1. [Frequency-bin QKD from ring sources](notebooks/17_frequency_bin_qkd.ipynb).** A rate and QBER model, checked against QuTiP qudit states, is fitted with three numbers on one operating point of a published experiment (Crisan et al. 2025) and then predicts the rest: the range (58.4 vs 59 dB) and the heralded g⁽²⁾, which played no part in the fit (0.078 vs 0.077). It under-predicts the qutrit QBER by about 30 %, and the qutrit key rate agrees only because two errors cancel; both are reported as misses. A Monte Carlo BBM92 run with Cascade and Toeplitz hashing sends "Hello Kues group" on a 37,575-bit key, and an intercept-resend eavesdropper is detected. For design: do not maximise Q (best near 3.3 × 10⁵ for an improved ring at a fixed pump limit), d = 3 is the defensible dimension, and biased bases come before a full Fourier sorter, which helps mainly at long distance.
+**1. [Frequency-bin QKD from ring sources](notebooks/17_frequency_bin_qkd.ipynb).** A rate and QBER model, checked against QuTiP qudit states, is fitted with three numbers on one operating point of a published experiment (Crisan et al. 2025). Its qubit range (58.4 dB) agrees with the authors' own simulated range (59 dB); their measured points reach 50 dB, so this is a model-to-model comparison. The heralded g⁽²⁾, which played no part in the fit, gives 0.078 vs 0.077 only when the pair rate from the measured 410 ps photon peak is combined with the linewidth from the published Q; either description alone gives 0.045 or 0.109, so this test is limited to about ±40 % by an unresolved photon-length puzzle. It under-predicts the qutrit QBER by about 30 %, and the qutrit key rate agrees only because two errors cancel; both are reported as misses. A Monte Carlo BBM92 run with Cascade and Toeplitz hashing sends "Hello Kues group" on a 37,575-bit key, and an intercept-resend eavesdropper is detected. For design: do not maximise Q (best near 3.3 × 10⁵ for an improved ring at a fixed pump limit), d = 3 is the defensible dimension (d = 5 wins only if the intrinsic error grows with dimension no faster than a fixed noise fraction, and the qutrit data show it growing faster), and biased bases come before a full Fourier sorter, which helps mainly at long distance.
 
-**2. [Ring resonator design → quantum performance](notebooks/13_ring_resonator_design.ipynb)** (Lumerical MODE + QuTiP). The microring of Kues et al. (Nature 2017) rebuilt from its waveguide cross-section: the model reproduces the 200 GHz FSR with a 136.9 µm radius and the 235,000 loaded Q with an ~800 MHz linewidth. It shows that 95 % of the generated photons can leave the ring (the ceiling on heralding efficiency), and that dispersion keeps at least 10 frequency-bin pairs usable.
+**2. [Ring resonator design → quantum performance](notebooks/13_ring_resonator_design.ipynb)** (Lumerical MODE + QuTiP). The microring of Kues et al. (Nature 2017) rebuilt from its waveguide cross-section and designed to the published 200 GHz FSR and 235,000 loaded Q: the resulting 136.9 µm radius matches the ~135 µm reported for this platform. It shows that 95 % of the generated photons can leave the ring (the ceiling on heralding efficiency), and that dispersion keeps at least 10 frequency-bin pairs usable.
 
 **3. [From photon source to quantum gate](notebooks/14_source_to_quantum_gate.ipynb)** (Perceval). A post-selected CNOT and a heralded (Knill) CNOT fed by the measured silicon source and by the designed microring, with every Perceval number checked against an independent permanent-based simulation. The post-selected gate reaches a truth-table fidelity of 0.93 with both sources, limited by distinguishability for the ring and by noise photons replacing lost ones for the silicon source. The heralded gate falls to 0.005 (silicon, 12.6 % heralding efficiency) and 0.71 (ring), because a lost photon still lets the heralds fire. At realistic pair brightness the post-selected gate gives 20–270 events per second, the heralded one under 0.02.
 
-**4. [Source model validated against a real experiment](notebooks/10_validation_heralded_source.ipynb).** Fitted with one parameter to the heralded g⁽²⁾ of a silicon pair source (Paesani et al., Nat. Commun. 2020), the model predicts the measured unheralded g⁽²⁾ (1.99 vs 1.97 ± 0.03) and the two-source HOM visibility (0.944 vs 0.96 ± 0.02).
+**4. [Source model validated against a real experiment](notebooks/10_validation_heralded_source.ipynb).** Fitted with one parameter (μ) to the heralded g⁽²⁾ of a silicon pair source (Paesani et al., Nat. Commun. 2020), the model predicts the two-source HOM visibility (0.944 vs 0.96 ± 0.02); the unheralded g⁽²⁾ (1.99 vs 1.97 ± 0.03) is a consistency test of g⁽²⁾ = 1 + P between two of the paper's own measurements. Two other numbers miss: the coincidence rate (22 % low) and μ from pump-power scaling (factor 2.6).
 
-**5. [Why fidelity falls with dimension in Kues et al. 2017](notebooks/12_kues2017_fidelity_analysis.ipynb).** Fixed white noise and unequal bin brightness are ruled out, the latter by both the measured spectrum and the ring's own dispersion. The remaining explanations point to the measurement setup rather than the chip, and the notebook proposes the measurement that separates them.
+**5. [Why fidelity falls with dimension in Kues et al. 2017](notebooks/12_kues2017_fidelity_analysis.ipynb).** Fixed white noise is strongly disfavoured (it misses the fidelities by up to 0.045; the paper gives no fidelity uncertainties), and unequal bin brightness is ruled out by both the measured spectrum and the ring's own dispersion. The remaining explanations point to the measurement setup rather than the chip, and the notebook proposes the measurement that separates them.
 
 **6. [Quantum light source design](projects/quantum-light-source-design/design_report.md).** Five heralded-source designs compared: a gently pumped ring with a photon-number-resolving herald gives g⁽²⁾(0) = 0.020, against 1.0 for an attenuated laser.
 
@@ -57,41 +57,52 @@ Every concept is explained the same way: the idea in plain words with an optics 
 | Quantity | Model | Experiment | Verdict |
 |---|---|---|---|
 | HOM visibility, weak coherent light | 0.5 | limit quoted in the literature | agrees |
-| Unheralded g⁽²⁾, silicon pair source (Paesani et al.) | 1.990 | 1.97 ± 0.03 | agrees |
+| Unheralded g⁽²⁾, silicon pair source (Paesani et al.), 1 + P from the measured purity, no fit | 1.990 | 1.97 ± 0.03 | consistent: a test between two measurements |
 | Two-source HOM visibility (Paesani et al.) | 0.944 | 0.96 ± 0.02 | agrees within error |
-| Two-source HOM visibility (Paesani et al.), Perceval source model with measured purity, g⁽²⁾ and loss (notebook 14) | 0.943 | 0.96 ± 0.02 | agrees within error |
-| Ring photon lifetime / linewidth, Q = 92,000 (Ma et al.) | 75.7 ps / 2.1 GHz | ~76 ps / ~2.1 GHz | agrees |
-| Ring linewidth, Q = 235,000 (Kues et al.) | 823 MHz | ~800 MHz | agrees |
+| Two-source HOM visibility (Paesani et al.), Perceval source model with measured purity, g⁽²⁾ and loss (notebook 14) | 0.943 | 0.96 ± 0.02 | agrees within error; same inputs as above, second method (Perceval) |
+| Ring photon lifetime / linewidth, Q = 92,000 (Ma et al.) | 75.7 ps / 2.1 GHz | ~76 ps / ~2.1 GHz | consistent (follows from Q by definition) |
+| Ring linewidth, Q = 235,000 (Kues et al.) | 823 MHz | ~800 MHz | consistent (follows from Q by definition) |
 | Microring effective dimension (Kues et al.) | g⁽²⁾ = 1 + 1/K | 10.45 ± 0.53 | ideal K = 10 within 0.85 error bars |
-| Qudit fidelity vs dimension (Kues et al.) | white noise: almost flat | falls 0.885 → 0.766 | white noise ruled out; analysed in notebook 12 |
-| QKD range, qubits (Crisan et al. 2025), asymptotic; the key rate there is far below 1 bit/s | 58.4 dB | 59 dB | agrees; 55.2–59.2 dB across model variants |
-| Heralded g⁽²⁾ at the qubit optimum (Crisan et al. 2025), not used in the fit | 0.078 | 0.077 | agrees |
+| Qudit fidelity vs dimension (Kues et al.) | white noise: almost flat | falls 0.885 → 0.766 | white noise strongly disfavoured (no published fidelity uncertainties); analysed in notebook 12 |
+| Heralded g⁽²⁾ at the qubit optimum (Crisan et al. 2025), not used in the fit | 0.078 (mixed); 0.045 / 0.109 (self-consistent) | 0.077 | agrees only for the mixed choice; bracketed |
 | Qutrit QBER, Z / X (Crisan et al. 2025), one fixed intrinsic error | 5.2 % / 6.1 % | 7.7 % / 8.1 % | **miss**: under-predicted by about 30 %; errors grow with dimension faster than the model |
+| Coincidence rate at 0.5 mW (Paesani et al.), from the fitted μ | 11.7 kHz | 15.0 kHz | **miss**: 22 % low; the idler-arm efficiency is not published |
+| Pairs per pulse μ from the 3 mW squeezing scaled to 0.5 mW (Paesani et al.) | 0.0056 | 0.0147 (fitted to the heralded g⁽²⁾) | **miss**: factor 2.6; the power-scaling assumption fails |
+
+### Consistency with published simulations
+
+| Quantity | Model | Paper simulation | Note |
+|---|---|---|---|
+| QKD range, qubits (Crisan et al. 2025), asymptotic | 58.4 dB | 59 dB | measured points reach 50 dB (qubits) and 44 dB (qutrits); the key rate at the range is far below 1 bit/s; 55.2–59.2 dB across model variants |
+| Qubit–qutrit crossover (Crisan et al. 2025) | 55.9 dB | 55 dB | moves over 48.5–55.9 dB with the rule for the intrinsic error |
 
 ## Run it
 
 ```bash
-git clone https://github.com/<your-username>/qutip-quantum-optics-learning.git
+git clone https://github.com/Nebtio-eng/qutip-quantum-optics-learning.git
 cd qutip-quantum-optics-learning
 pip install -r requirements.txt
 jupyter lab
 ```
 
-Every notebook runs top to bottom on a laptop (notebooks 09, 14, 15, 16 and 17 take under a minute) and ends with `N of N checks passed`. Notebook 13 reads saved Lumerical results, so it needs no Lumerical license; the scripts in `projects/ring-resonator-design/lumerical/` regenerate them with Ansys Lumerical MODE. Notebooks 14, 15 and 16 need Perceval (`pip install perceval-quandela`, included in `requirements.txt`). Built and tested with Python 3, QuTiP 5.3.1, Perceval 1.3.1.
+Every notebook runs top to bottom on a laptop (notebooks 09, 14, 15, 16 and 17 take under a minute) and ends with `N of N checks passed`. Notebook 13 reads saved Lumerical results, so it needs no Lumerical license; the scripts in `projects/ring-resonator-design/lumerical/` regenerate them with Ansys Lumerical MODE. Notebooks 14, 15 and 16 need Perceval (`pip install perceval-quandela`, included in `requirements.txt`). Built and tested with Python 3.13, QuTiP 5.3.1 and Perceval 1.3.1; `requirements.txt` pins the tested versions.
 
 ## Limitations and next steps
 
 - The ring geometry and core index are taken from earlier papers on the same platform; the core material's dispersion is unknown and is treated as a range.
 - The bus–ring coupling model and an EME check differ by up to 35 %; this moves the design gap, not the escape efficiency.
 - Avoided crossings with higher-order ring modes cannot be located at the model's precision.
-- Dark counts and Raman noise are not yet in the source model.
+- The heralded-source model (notebook 10 and the light-source design) has no dark counts or Raman noise. The QKD model (notebook 17) includes dark counts, but no Raman noise and no phase drift along the fibre.
 - The CNOT study (notebook 14) uses truth-table fidelity only, not process fidelity, and a mixture model of source imperfections (Pont et al. 2022). The microring source is a best case: designed g⁽²⁾ and on-chip efficiency only.
 - Gate rates scale as b² or b⁴ with the pair brightness b, which assumes every source's own herald is monitored; the brightness values are assumed.
 - Perceval 1.3.1 deviates from exact b⁴ scaling by up to about 1 % for the heralded gate at b = 0.005 with M < 1 and loss. Notebook 14 prints this and does not count it as a check; no reported result depends on it.
 - All QKD key rates (notebook 17) are asymptotic, with no finite-key analysis. Range points far below 1 bit/s are labelled asymptotic only.
 - Absolute pair rates in the QKD study are calibrated on measured data. The coupled-mode model is up to 237× too high against a published ring, so only its ratios between designs are used (notebook 16). Other rings inherit the calibrated experiment's loss budget and intrinsic error, and the pump power they need is unverified.
 - Receiver R3, a full Fourier sorter, is an assumption and not a device: its loss (3 dB, swept 0–6 dB), its crosstalk, its multi-tone drive and its active basis choice are all assumed. How far biased bases can go depends on an assumed floor of 1000 X events per hour.
-- The intrinsic QKD error is one fitted number, and how it carries to higher dimension is uncertain; the best dimension depends on that choice. The measured photon length (410 ps) and the length implied by the published Q do not agree; both are run.
+- The intrinsic QKD error is one fitted number, and how it carries to higher dimension is uncertain; the best dimension depends on that choice.
+- The measured photon length (410 ps) and the length implied by the published Q do not agree; both are run. The heralded g⁽²⁾ agrees with the paper only for a mixed choice (0.078 vs 0.077); each self-consistent choice gives 0.045 or 0.109.
+- Two-photon absorption is not modelled: the pair rate scales as P², so the optimal pump comes out about 60 % too high.
+- The 59 dB range of Crisan et al. 2025 is their simulated value, so the range agreement compares two models; their measured points stop at 50 dB.
 
 ## References
 
