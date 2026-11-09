@@ -40,7 +40,7 @@ Every result is **validated**: each notebook compares its simulations with analy
 | 12 | [Fidelity vs dimension](notebooks/12_kues2017_fidelity_analysis.ipynb) | Noise, imbalance and dephasing models fitted to tomography data | Kues et al. 2017 frequency-bin qudits |
 | 13 | [Ring resonator design](notebooks/13_ring_resonator_design.ipynb) | Mode solving, coupling, Q budget, dispersion, bin brightness | Lumerical design to quantum figures of merit |
 | 14 | [From photon source to quantum gate](notebooks/14_source_to_quantum_gate.ipynb) | Perceval, imperfect-source model, HOM with noise and loss, post-selected vs heralded CNOT, brightness, click detectors | Which source imperfection limits a two-photon gate |
-| 15 | [What would it take?](notebooks/15_what_would_it_take.ipynb) | Requirement map, F = 0.90 contour, loss rule from counting photons, rate scaling, multiplexing | Design targets for a heralded CNOT: M ≥ 0.98, T ≥ 0.987 per photon |
+| 15 | [What would it take?](notebooks/15_what_would_it_take.ipynb) | Requirement map, F = 0.90 contour, loss rule from counting photons, rate scaling, multiplexing | Design targets for a heralded CNOT: M ≥ 0.98, T ≥ 0.987 per photon at g² ≤ 0.01 (tighter at g² = 0.02) |
 | 16 | [A realistic ring card](notebooks/16_realistic_ring_card.ipynb) | Joint spectral amplitude, purity by SVD, closed-form purity limit, purity vs brightness, design cards | g⁽²⁾ = 1.92 of Kues et al. as the single-ring limit; a QKD ring and a gate ring |
 | 17 | [Frequency-bin QKD](notebooks/17_frequency_bin_qkd.ipynb) | Rate and QBER model, fitted vs predicted, BBM92 with Cascade and Toeplitz, intercept-resend, Q rule, best dimension, receivers | Crisan et al. 2025; Tagliavacche et al. 2024 |
 

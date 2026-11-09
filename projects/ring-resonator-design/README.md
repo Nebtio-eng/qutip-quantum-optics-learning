@@ -36,4 +36,4 @@ Each script writes `results/s19_<step>.json`, which the next step reads.
 
 Bin brightness is the overlap of two resonances, 1/(1 + (Δ_k/Γ)²), for a CW pump on resonance and equal linewidths; notebook 13 confirms it with a master equation. The earlier rule, 1/(1 + (2Δ_k/Γ)²), overstated the dispersion penalty (bin pair 10: 0.74). With the corrected rule, the 2× brightness spread seen in the measured joint spectrum allows D up to about 3.4× the model (1.7× before), and D = 5× is disfavoured rather than excluded.
 
-`lumerical/s19_dispersion.py`, its saved JSON and `s19_dispersion_brightness.png` are the original Lumerical run and still use the earlier rule. The resonance positions Δ_k in them are unaffected, and notebook 13 recomputes the brightness from those Δ_k.
+`lumerical/s19_dispersion.py`, its saved JSON and `s19_dispersion_brightness.png` are the original Lumerical run and still use the earlier rule, as do `lumerical/s19_quantum.py` and `results/s19_quantum.json`, which build the bin-state amplitudes from that brightness. The resonance positions Δ_k are unaffected, and notebook 13 recomputes the brightness and the bin-state fidelities from those Δ_k.
