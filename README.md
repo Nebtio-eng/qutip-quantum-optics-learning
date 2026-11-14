@@ -79,8 +79,8 @@ Every concept is explained the same way: the idea in plain words with an optics 
 ## Run it
 
 ```bash
-git clone https://github.com/Nebtio-eng/qutip-quantum-optics-learning.git
-cd qutip-quantum-optics-learning
+git clone https://github.com/Nebtio-eng/quantum-photonics-model-chain.git
+cd quantum-photonics-model-chain
 pip install -r requirements.txt
 jupyter lab
 ```
